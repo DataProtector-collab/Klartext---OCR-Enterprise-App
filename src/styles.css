@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,650&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg: #efece4;
+  --color-surface: #f7f5ef;
+  --color-elevated: #fcfbf7;
+  --color-fg: #1a1916;
+  --color-muted: #6e6a62;
+  --color-subtle: #8a857b;
+  --color-border: color-mix(in oklab, var(--color-fg) 12%, transparent);
+  --color-border-strong: color-mix(in oklab, var(--color-fg) 22%, transparent);
+  --color-primary: #1a1916;
+  --color-primary-fg: #f7f5ef;
+  --color-danger: #8f2f24;
+  --color-ok: #2f5d3a;
+
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --shadow-border:
+    0 0 0 1px color-mix(in oklab, var(--color-fg) 8%, transparent),
+    0 1px 2px -1px color-mix(in oklab, var(--color-fg) 8%, transparent),
+    0 8px 24px -16px color-mix(in oklab, var(--color-fg) 18%, transparent);
+  --shadow-border-hover:
+    0 0 0 1px color-mix(in oklab, var(--color-fg) 14%, transparent),
+    0 1px 2px -1px color-mix(in oklab, var(--color-fg) 10%, transparent),
+    0 12px 28px -16px color-mix(in oklab, var(--color-fg) 22%, transparent);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--color-fg) 4%, transparent), transparent 60%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 47px,
+        color-mix(in oklab, var(--color-fg) 3.5%, transparent) 48px
+      );
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-fg) 18%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(-8%);
+  }
+  100% {
+    transform: translateY(108%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-line,
+  .fade-up {
+    animation: none !important;
+  }
+}
